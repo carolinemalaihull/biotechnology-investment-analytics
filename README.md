@@ -12,7 +12,7 @@
 ## Reflections
 
 This project has taught me how to initiate a GitHub repository and clone it to my computer as a local repository to make changes and push them back to the remote repository on GitHub. I then learned to use branches to make changes to my local repository, push them to the remote repository, check for conflicts and then merge with the main branch. Using branches allows multiple developers to work on the same project simultaneously. Any issues with new code can be identified and fixed without affecting the main project, keeping the repository stable while development continues.
-Overall this assignment highlighted how important Git and GitHub are to collaboration!
+Overall this assignment highlighted how important Git and GitHub are to collaboration and version control!
 
 ## Experience to date
 
