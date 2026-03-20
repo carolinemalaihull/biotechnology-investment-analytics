@@ -67,11 +67,12 @@ git push -u origin feature
 9. Open pull request on github repository
 ![Open pull request on github](screenshots/open_pull_request.png)
 
-10.Check for conflicts on github repository
+10. Check for conflicts on github repository
 ![Confirm no conflicts](screenshots/no_conflicts_with_base_branch.png)
 
 11. Merge with base branch
 ![Merge](screenshots/merge_confirmed.png)
 
-12.Image directory created here
+12. Image directory created here
 ![Image directory](screenshots/image_directory.png)
+
