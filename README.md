@@ -1,9 +1,10 @@
 
+# CFG Week 1 Assignment
+## README
+
 
 # Caroline Hull
 
-### README
- 
 ## Bio
 
 **I work in biotech and I am just starting my data science journey. I would love to learn how to combine biology with data science to get the most from my experimental work.**
@@ -15,6 +16,12 @@ R *(beginner)*
 ## Current Assignment
 
 In this assignment I will demonstrate Git and GitHub usage for collaborative projects using different Git commands
+
+## Files
+
+A gitignore file is included to exclude unnecessary system files (like DS_Store) and keep the repository clean. This can also be included to exclude sensitive information like API keys.
+
+A requirements file is included to list the Python dependencies required for this project.
 
 ## Git Commands
 
@@ -90,9 +97,4 @@ git push -u origin feature
 
 ![Image directory](screenshots/image_directory.png)
 
-### Files
-
-A gitignore file is included to exclude unnecessary system files (like DS_Store) and keep the repository clean. This can also be included to exclude sensitive information like API keys.
-
-A requirements file is included to list the Python dependencies required for this project.
 
