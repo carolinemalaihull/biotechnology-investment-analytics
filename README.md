@@ -62,13 +62,9 @@ git push -u origin feature
 
 ![Create new branch and switch](screenshots/create_switch_branch.png)
 
-7. Create requirements file on feature branch
+6. Create requirements file, check branch status and push to remote repo
 
-![Create requirements file](screenshots/add_requirements.png)
-
-6. Check branch status
-
-![Check status of new branch](screenshots/check_status.png)
+![Create requirements file on features branch](screenshots/create_requirements.png)
 
 7. Push changes on feature branch to remote branch 
 
