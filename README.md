@@ -6,7 +6,7 @@
  
 ## Bio
 
-**I am Caroline. I work in biotech and I am just starting my data science journey. I would love to learn how to combine biolgy with data science to get the most from my work.**
+**I am Caroline. I work in biotech and I am just starting my data science journey. I would love to learn how to combine biology with data science to get the most from my work.**
 
 ## Experience to date
 Python *(beginner)*
@@ -14,7 +14,7 @@ R *(beginner)*
 
 ## Current Assignment
 
-In this assignment I will demonstrate Git and GitHub usage for collaborative projects using different git commands
+In this assignment I will demonstrate Git and GitHub usage for collaborative projects using different Git commands
 
 ## Git Commands
 
@@ -23,10 +23,10 @@ Use `git checkout -b feature` to create a branch from the main branch and switch
 Use `code` to create a new file.
 Use `git add` to stage new changes.
 Use `git commit -m "Comment"` to commit new changes to the local branch.
-Use `git push -u origin feature` to push changes from the local branch to the remote branch.
+Use `git push -u origin feature` to push changes from the local branch for example called feature to the remote branch.
 
 
-### Example Git Workflow
+### Example Git Workflow 
 
 git status
 git checkout -b feature
@@ -73,5 +73,5 @@ git push -u origin feature
 11. Merge with base branch
 ![Merge](screenshots/merge_confirmed.png)
 
-Image directory created here
+12.Image directory created here
 ![Image directory](screenshots/image_directory.png)
