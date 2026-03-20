@@ -74,5 +74,6 @@ git push -u origin feature
 ![Merge](screenshots/merge_confirmed.png)
 
 12. Image directory created here
+
 ![Image directory](screenshots/image_directory.png)
 
