@@ -1,16 +1,23 @@
 
 # CFG Week 1 Assignment
-## README
-
 
 # Caroline Hull
 
-## Bio
+## Introduction and Bio
+
+**Welcome to my first GitHub project. This project demonstrates my progress learning to use Git and GitHub.**
 
 **I work in biotech and I am just starting my data science journey. I would love to learn how to combine biology with data science to get the most from my experimental work.**
 
+## Reflections
+
+This project has taught me how to initiate a GitHub repository and clone it to my computer as a local repository to make changes and push them back to the remote repository on GitHub. I then learned to use branches to make changes to my local repository, push them to the remote repository, check for conflicts and then merge with the main branch. Using branches allows multiple developers to work on the same project simultaneously. Any issues with new code can be identified and fixed without affecting the main project, keeping the repository stable while development continues.
+Overall this assignment highlighted how important Git and GitHub are to collaboration!
+
 ## Experience to date
+
 Python *(beginner)*
+
 R *(beginner)*
 
 ## Current Assignment
@@ -47,7 +54,7 @@ git commit -m "Add assignment work"
 
 git push -u origin feature
 
-### Summary of process
+### Step-by-step guide
 
 1. Change directory to repository
 
@@ -96,5 +103,7 @@ git push -u origin feature
 12. Image directory created here
 
 ![Image directory](screenshots/image_directory.png)
+
+
 
 
