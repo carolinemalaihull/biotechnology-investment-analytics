@@ -11,30 +11,33 @@
 
 ## Reflections
 
-This project has taught me how to initiate a GitHub repository and clone it to my computer as a local repository to make changes and push them back to the remote repository on GitHub. I then learned to use branches to make changes to my local repository, push them to the remote repository, check for conflicts and then merge with the main branch. Using branches allows multiple developers to work on the same project simultaneously. Any issues with new code can be identified and fixed without affecting the main project, keeping the repository stable while development continues.
+This project has taught me how to initiate a GitHub repository and clone it to my computer as a local repository to make changes and push them back to the remote repository on GitHub. I then used branches to make changes to my local repository, push them to the remote repository, check for conflicts and then merge with the main branch. Using branches allows multiple developers to work on the same project simultaneously. Any issues with new code can be identified and fixed without affecting the main project, keeping the repository stable while development continues.
 Overall this assignment highlighted how important Git and GitHub are to collaboration and version control!
 
 ## Experience to date
 
-Python *(beginner)*
+ - Python *(beginner)*
 
-R *(beginner)*
+ - R *(beginner)*
 
 ## Current Assignment
 
-In this assignment I will demonstrate Git and GitHub usage for collaborative projects using different Git commands
+In this assignment, I demonstrate how Git and GitHub are used for collaborative projects using key Git commands.
 
 ## Files
 
-A gitignore file is included to exclude unnecessary system files (like DS_Store) and keep the repository clean. This can also be included to exclude sensitive information like API keys.
+A gitignore file is included to exclude unnecessary system files (like DS_Store which is a system file created by macOS to store folder settings and is not relevant to the project) and keep the repository clean. This can also be included to exclude sensitive information like API keys.
 
 A requirements file is included to list the Python dependencies required for this project.
 
-## Git Commands
+## Key Commands
 
 Use `git status` to list all new or modified files that haven't yet been committed.
+Use `git branch` to list all branches abd check which branch you are on marked by an *.
+Use `git branch feature` to create a new branch called 'feature'
+Use `git switch feature` to switch to a different branch, in this example the branch called 'feature'.
 Use `git checkout -b feature` to create a branch from the main branch and switch to it.
-Use `code` to create a new file.
+Use `code new_file.txt` to open a file in VS code, in this case a txt file callled new_file.
 Use `git add` to stage new changes.
 Use `git commit -m "Comment"` to commit new changes to the local branch.
 Use `git push -u origin feature` to push changes from the local branch for example called feature to the remote branch.
@@ -42,7 +45,7 @@ Use `git push -u origin feature` to push changes from the local branch for examp
 
 ### Example Git Workflow 
 
-git status
+git clone
 
 git checkout -b feature
 
@@ -50,9 +53,13 @@ code
 
 git add .
 
+git status
+
 git commit -m "Add assignment work"
 
 git push -u origin feature
+
+git switch main
 
 ### Step-by-step guide
 
