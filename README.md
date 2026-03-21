@@ -83,7 +83,7 @@ git switch main
 
 ![Create new branch and switch](screenshots/create_switch_branch.png)
 
-6. Create requirements.txt file, check branch status and push to remote repo
+6. Create a requirements.txt file, verify the branch status, stage and commit the changes 
 
 ![Create requirements.txt file on feature branch](screenshots/create_requirements.png)
 
