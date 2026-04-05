@@ -1,0 +1,15 @@
+pembrolizumab Safety Summary:
+--------------------------------------------------
+Total reports analysed: 500
+
+Top reported reactions: 
+ - Fatigue (63)
+ - Nausea (41)
+ - Anaemia (40)
+ - Diarrhoea (36)
+ - Pruritus (35)
+
+Serious reactions found: 16
+Details: Death
+--------------------------------------------------
+
