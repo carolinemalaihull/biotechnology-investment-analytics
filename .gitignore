@@ -8,4 +8,4 @@ __pycache__/
 # Ignore the virtual environment folder
 venv/
 
-# Optional: if you use a API keys - not required for the API used here
+# Optional: if you use a API keys - not required for the API used in Assignment 2
