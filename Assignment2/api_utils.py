@@ -1,4 +1,10 @@
+# This programme uses open FDA API which provides public data about drug safety reports
+# No key is required for basic usage of this API
+# The API returns data in JSON format which is converted into Python dictionaries
+
 # Import the request library to simplify making API calls 
+# Requests module sends HTTP requests to the API
+# Installed by running pip install requests
 import requests
 
 # api_utils.py - calls the FDA API and returns data
