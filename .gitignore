@@ -1,2 +1,11 @@
 #DS_store
 .DS_store
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore the virtual environment folder
+venv/
+
+# Optional: if you use a API keys - not required for the API used here
