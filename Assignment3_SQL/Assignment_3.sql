@@ -67,6 +67,11 @@ CREATE TABLE Startup_Areas (
 -- DESCRIBE Startup_Areas
 
 
+-- --
+-- POPULATING TABLES
+-- --
+
+
 INSERT INTO Therapeutic_Areas (area_id, area_name)
 VALUES
 (1, 'Oncology'),
@@ -153,3 +158,63 @@ VALUES
 (14, 7),
 (15, 4),
 (15, 10)
+
+-- --
+-- QUERIES
+-- --
+
+SELECT *
+FROM Startups
+ORDER BY name ;
+
+SELECT s.name, t.area_name
+FROM Startups s
+JOIN Startup_areas sa ON s.startup_id = sa.startup_id
+JOIN Therapeutic_Areas t ON sa.area_id = t.area_id
+ORDER BY s.name;
+
+SELECT startup_id, SUM(investment_amount_millions) AS total_investment
+FROM Investments
+GROUP BY startup_id 
+ORDER BY total_investment DESC ;
+
+SELECT AVG(investment_amount_millions) AS avg_investment
+FROM Investments ;
+
+SELECT startup_id, COUNT(*) AS number_of_rounds 
+FROM Investments
+GROUP BY startup_id 
+ORDER BY number_of_rounds DESC ;
+
+SELECT s.name, COUNT(sa.area_id) AS number_of_areas
+FROM Startups s
+JOIN Startup_Areas sa ON s.startup_id = sa.startup_id
+GROUP BY s.name
+ORDER BY number_of_areas DESC ;
+
+SELECT investment_id, YEAR(investment_date) AS investment_year
+FROM Investments
+ORDER BY investment_year ASC ;
+
+SELECT UPPER(name) AS startup_name
+FROM Startups
+ORDER BY startup_name ;
+
+DELETE FROM Investments
+WHERE investment_id = 1 ;
+
+-- Calculate the total investment for a specifc startup_id
+
+DROP PROCEDURE IF EXISTS GetTotalInvestment;
+
+CREATE PROCEDURE GetTotalInvestment(IN startup INT)
+BEGIN
+		SELECT SUM(investment_amount_millions) AS total_investment
+		FROM Investments
+		WHERE startup_id = startup ;
+END ;
+
+CALL GetTotalInvestment(5);
+
+
+
