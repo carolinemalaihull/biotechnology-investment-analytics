@@ -1,15 +1,15 @@
-CAR T cell Safety Summary:
+metformin Safety Summary:
 --------------------------------------------------
 Total reports analysed: 500
 
 Top reported reactions: 
- - Fatigue (49)
- - White blood cell count increased (43)
- - White blood cell count decreased (43)
- - Anaemia (39)
- - Platelet count decreased (39)
+ - Diarrhoea (37)
+ - Vomiting (27)
+ - Fatigue (26)
+ - Abdominal pain upper (25)
+ - Off label use (24)
 
-Serious reactions found: 26
+Serious reactions found: 6
 Details: Death
 --------------------------------------------------
 

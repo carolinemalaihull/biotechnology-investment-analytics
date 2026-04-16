@@ -6,6 +6,8 @@
 -- ------------------------------
 
 -- This database simulates a venture capital firm tracking biotech startups across multiple therapeutic areas and funding rounds
+-- Data for most recent funding rounds of each company is real but prior rounds are a mix of real and fabricated data
+-- Real data source https://www.labiotech.eu/biotech-funding-2026-tracker/
 
 -- --
 -- DATABASE SETUP
@@ -17,9 +19,9 @@ DROP DATABASE IF EXISTS BioVenture_Intelligence ;
 CREATE DATABASE BioVenture_Intelligence ;
 USE BioVenture_Intelligence ;
 
--- --
--- TABLE CREATION
--- --
+-- -------------- --
+-- TABLE CREATION --
+-- -------------- --
 
 -- Create a table called Therapeutic_Areas storing information about targeted diseases/disorders
 
@@ -67,9 +69,9 @@ CREATE TABLE Startup_Areas (
 -- DESCRIBE Startup_Areas
 
 
--- --
--- POPULATING TABLES
--- --
+-- ----------------- --
+-- POPULATING TABLES --
+-- ----------------- --
 
 
 INSERT INTO Therapeutic_Areas (area_id, area_name)
@@ -159,51 +161,83 @@ VALUES
 (15, 4),
 (15, 10)
 
--- --
--- QUERIES
--- --
+-- ------- --
+-- QUERIES --
+-- ------- --
+
+
+-- BASICA DATA RETRIEVAL --
+
+
+-- Retrieves all startup records and orders them alphabetically by name
 
 SELECT *
 FROM Startups
 ORDER BY name ;
 
+-- RELATIONSHIP ANALYSIS --
+
+-- Retrieves each startup with its associated therapeutic areas using a many-to-many relationship and orders them alphabetically
+
 SELECT s.name, t.area_name
 FROM Startups s
 JOIN Startup_areas sa ON s.startup_id = sa.startup_id
 JOIN Therapeutic_Areas t ON sa.area_id = t.area_id
-ORDER BY s.name;
+ORDER BY s.name ;
+
+-- PORTFOLIO PERFORMANCE ANALYSIS --
+
+-- Summarises total capital raised by each startup to support portfolio performance analysis and ranks startups by funding volume
 
 SELECT startup_id, SUM(investment_amount_millions) AS total_investment
 FROM Investments
 GROUP BY startup_id 
 ORDER BY total_investment DESC ;
 
+-- Calculates the average funding round size across the portfolio to provide insight into typical investment levels
+
 SELECT AVG(investment_amount_millions) AS avg_investment
 FROM Investments ;
 
+-- Measures investment activity per startup by counting funding rounds to identify more actively funded or mature companies
+ 
 SELECT startup_id, COUNT(*) AS number_of_rounds 
 FROM Investments
 GROUP BY startup_id 
 ORDER BY number_of_rounds DESC ;
 
+-- Measures portolio diversification by counting how many therapeutic areas each startup is involved in, highlighting multi-sector or platform companies
+ 
 SELECT s.name, COUNT(sa.area_id) AS number_of_areas
 FROM Startups s
 JOIN Startup_Areas sa ON s.startup_id = sa.startup_id
 GROUP BY s.name
 ORDER BY number_of_areas DESC ;
 
+-- ADVANCED INSIGHTS --
+
+-- Extracts the year of each investment to support analysis of funding trends and timing of capital deployment over time
+
 SELECT investment_id, YEAR(investment_date) AS investment_year
 FROM Investments
 ORDER BY investment_year ASC ;
+
+-- DATA MODIFICATION --
+
+-- Standardises startup names to uppercase format for consistent presentation and sorted alphabetically
 
 SELECT UPPER(name) AS startup_name
 FROM Startups
 ORDER BY startup_name ;
 
+-- Removes an investment record to correct or update the portfolio data, for example if a funding entry is erroneous
+
 DELETE FROM Investments
 WHERE investment_id = 1 ;
 
--- Calculate the total investment for a specifc startup_id
+-- STORED PROCEDURE --
+
+-- Creates and executes a stored procedure to calculate total capital raised by a selected startup, supporting quick portfolio-level investment analysis
 
 DROP PROCEDURE IF EXISTS GetTotalInvestment;
 
