@@ -254,18 +254,18 @@ FROM Startups
 ORDER BY startup_name ;
 
 -- 11. Removes an investment record to correct or update the portfolio data, for example if a funding entry is erroneous
+-- Warning: this permanently removes data
 
 DELETE FROM Investments
 WHERE investment_id = 5 ;
 
 -- STORED PROCEDURE --
 
--- Creates and executes a stored procedure to calculate total capital raised by a selected startup, supporting quick portfolio-level investment analysis
--- Note:
--- DELIMITER is required for full script execution in MySQL.
+-- 12. Creates and executes a stored procedure to calculate total capital raised by a selected startup, supporting quick portfolio-level investment analysis
+-- Note: DELIMITER is required for full script execution in MySQL.
 -- This section must be run as part of the full script (Execute SQL Script), not as an individual statement in DBeaver.
 
-DROP PROCEDURE IF EXISTS GetTotalInvestment;
+DROP PROCEDURE IF EXISTS GetStartupTotalInvestment;
 
 DELIMITER $$
 
