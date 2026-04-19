@@ -1,0 +1,15 @@
+CAR T cell Safety Summary:
+--------------------------------------------------
+Total reports analysed: 500
+
+Top reported reactions: 
+ - Fatigue (49)
+ - White blood cell count increased (43)
+ - White blood cell count decreased (43)
+ - Anaemia (39)
+ - Platelet count decreased (39)
+
+Serious reactions found: 26
+Details: Death
+--------------------------------------------------
+
