@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project simulates a venture capital (VC)firm tracking biotech startups across multiple therapeutic areas and funding rounds.
+This project simulates a venture capital (VC) firm tracking biotech startups across multiple therapeutic areas and funding rounds.
 
 The database is designed to support portfolio analysis, enabling insights into capital allocation, funding trends and startup activity across different biotech sectors.
 
