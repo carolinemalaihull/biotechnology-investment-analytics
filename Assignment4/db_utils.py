@@ -1,7 +1,12 @@
+# db_utils imports database connection from config file
+# Stores python functions that contain SQL queries
+
+# pymysql is a python package that lets you talk to SQL databases and run SQL queries and return results to python
+
 import pymysql
 from config import get_db_connection
 
-def get_portfolio():
+def get_startups():
     with get_db_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute("""
@@ -43,7 +48,7 @@ def get_startup_by_id(startup_id):
                  SELECT *
                 FROM Startups
                 WHERE startup_id = %s
-                """, (startup_id))
+                """, (startup_id,))
             return cursor.fetchall()
 
 
@@ -52,7 +57,7 @@ def get_score():
         with conn.cursor() as cursor:
             cursor.execute("""
                                 SELECT s.name,
-                    SUM(i.investment_Amount_millions) AS total_funding,
+                    SUM(i.investment_amount_millions) AS total_funding,
                     COUNT(i.investment_id) AS rounds,
                     COUNT(DISTINCT sa.area_id) AS areas,
                             
@@ -69,9 +74,33 @@ def get_score():
                 GROUP BY s.startup_id;
                 """)
             return cursor.fetchall()
+        
+def post_new_startup(data):
+    with get_db_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO Startups (name, technology, latest_investment_stage)
+                VALUES (%s, %s, %s)
+            """, (
+                data["name"],
+                data["technology"],
+                data["latest_investment_stage"]
+            ))
+            new_id = cursor.lastrowid
+        conn.commit()
 
+    return new_id
 
-
+def delete_startup(startup_id):
+    with get_db_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                DELETE
+                FROM Startups
+                WHERE startup_id = %s
+                """, (startup_id))
+        conn.commit()
+    return {"message": f"Startup {startup_id} deleted"}
     
 if __name__ == "__main__":
     conn = get_db_connection()

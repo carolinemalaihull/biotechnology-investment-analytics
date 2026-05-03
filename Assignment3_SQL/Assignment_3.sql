@@ -35,7 +35,7 @@ CREATE TABLE Therapeutic_Areas (
 
 
 CREATE TABLE Startups (
-			startup_id INT PRIMARY KEY,
+			startup_id INT AUTO_INCREMENT PRIMARY KEY,
 			name VARCHAR(255) NOT NULL,
 			latest_investment_stage VARCHAR(20) NOT NULL,
 			technology VARCHAR(50) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE Startups (
 
 CREATE TABLE Investments (
 			startup_id INT NOT NULL,			
-			investment_id INT PRIMARY KEY,
+			investment_id INT AUTO_INCREMENT PRIMARY KEY,
 			stage VARCHAR(20) NOT NULL,
 			investment_amount_millions DECIMAL(10,2) NOT NULL,
 			investment_date DATE NOT NULL,
@@ -88,23 +88,23 @@ VALUES
 (9,	'Inflammatory Diseases'),
 (10, 'Psychiatry') ;
 
-INSERT INTO Startups (startup_id, name, latest_investment_stage, technology)
+INSERT INTO Startups (name, latest_investment_stage, technology)
 VALUES
-(1,	'HexemBio',	'Seed', 'Cell therapies'),
-(2,	'Stipple Bio','Series A',	'Antibody-drug conjugates'),
-(3,	'Ambrosia Biosciences', 'Series B', 'Small molecules'),
-(4,	'Terrestrial Bio', 'Series C', 'Vaccines'),
-(5,	'Immutrin', 'Series A', 'Monoclonal antibody'),
-(6,	'Gilgamesh Pharma', 'Series A', 'Small molecules'),
-(7,	'Oryon Cell Therapies', 'Series A', 'Cell therapies'),
-(8,	'R1 Therapeutics', 'Series A', 'Small molecules'),
-(9,	'Crossbow Therapeutics', 'Series B', 'Bispecific antibody'),
-(10, 'Excalipoint Therapeutics', 'Seed', 'T-cell engager'),
-(11, 'Korro Bio', 'Series C', 'GLP-1 receptor agonist'),
-(12, 'Prolium Biosciences', 'Series A', 'T-cell engager'),
-(13, 'Altesa BioSciences', 'Series B', 'Small molecules'),
-(14, 'QuantX Biosciences', 'Series B', 'Small molecules'),
-(15, 'Exciva', 'Series B', 'Small molecules') ;
+('HexemBio', 'Seed', 'Cell therapies'),
+('Stipple Bio', 'Series A', 'Antibody-drug conjugates'),
+('Ambrosia Biosciences', 'Series B', 'Small molecules'),
+('Terrestrial Bio', 'Series C', 'Vaccines'),
+('Immutrin', 'Series A', 'Monoclonal antibody'),
+('Gilgamesh Pharma', 'Series A', 'Small molecules'),
+('Oryon Cell Therapies', 'Series A', 'Cell therapies'),
+('R1 Therapeutics', 'Series A', 'Small molecules'),
+('Crossbow Therapeutics', 'Series B', 'Bispecific antibody'),
+('Excalipoint Therapeutics', 'Seed', 'T-cell engager'),
+('Korro Bio', 'Series C', 'GLP-1 receptor agonist'),
+('Prolium Biosciences', 'Series A', 'T-cell engager'),
+('Altesa BioSciences', 'Series B', 'Small molecules'),
+('QuantX Biosciences', 'Series B', 'Small molecules'),
+('Exciva', 'Series B', 'Small molecules');
 
 INSERT INTO Investments (startup_id, investment_id, stage, investment_amount_millions, investment_date)
 VALUES
@@ -281,6 +281,5 @@ END $$
 DELIMITER ;
 
 CALL GetStartupTotalInvestment(1);
-
 
 

@@ -1,6 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from config import get_db_connection
-from db_utils import get_db_connection, get_portfolio, get_top_startups, get_sector_allocation, get_startup_by_id, get_score
+from db_utils import get_db_connection, get_startups, get_top_startups, get_sector_allocation, get_startup_by_id, get_score, post_new_startup, delete_startup
 
 
 app = Flask(__name__)
@@ -9,27 +9,27 @@ app = Flask(__name__)
 def home():
     return jsonify({"message": "BioVenture API is running"})
 
-@app.route("/portfolio")
-def portfolio():
-    data = get_portfolio()
+@app.route("/startups")
+def startups():
+    data = get_startups()
     return jsonify(data)
 
-@app.route("/portfolio/top-startups")
-def top_statups():
+@app.route("/startups/top-startups")
+def top_investment_statups():
     data = get_top_startups()
     return jsonify(data)
 
-@app.route("/portfolio/sector-allocation")
-def top_sectors():
+@app.route("/sectors/allocation")
+def sector_allocation():
     data = get_sector_allocation()
     return jsonify(data)
 
-@app.route("/portfolio/startup/<int:startup_id>")
+@app.route("/startups/<int:startup_id>")
 def startup_by_id(startup_id):
     data = get_startup_by_id(startup_id)
     return jsonify(data)
 
-@app.route("/portfolio/rankings")
+@app.route("/startups/scores")
 def rankings():
     data = get_score()
 
@@ -41,6 +41,17 @@ def rankings():
             + (row["areas"] * 3)
         )
     return jsonify(data)
+
+@app.route("/startups", methods=["POST"])
+def add_startup():
+    data = request.json
+    result = post_new_startup(data)
+    return jsonify({"message": "Startup added", "data": result}), 201
+
+@app.route("/startups/<int:startup_id>", methods=["DELETE"])
+def remove_startup(startup_id):
+    result = delete_startup(startup_id)
+    return jsonify(result), 200
 
 
 if __name__ == '__main__':
