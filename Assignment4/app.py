@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from config import get_db_connection
-from db_utils import get_db_connection, get_startups, get_top_startups, get_sector_allocation, get_startup_by_id, get_score, post_new_startup, delete_startup
+from db_utils import get_startups, get_top_startups, get_sector_allocation, get_startup_by_id, get_score, post_new_startup, delete_startup
 
 
 app = Flask(__name__)
