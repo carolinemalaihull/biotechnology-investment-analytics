@@ -5,6 +5,8 @@ from db_utils import get_startups, get_top_startups, get_sector_allocation, get_
 
 app = Flask(__name__)
 
+app.json.sort_keys = False
+
 @app.route("/")
 def home():
     return jsonify({"message": "BioVenture API is running"})
