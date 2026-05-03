@@ -6,6 +6,7 @@
 import pymysql
 from config import get_db_connection
 
+# 1. Define a function to return all startups
 def get_startups():
     try:
         with get_db_connection() as conn:
@@ -31,8 +32,7 @@ def get_startups():
         print(f"Error fetching startups: {e}")
         return []
 
-
-
+# 2. Define a function that orders startups in descending order based on total investment
 def get_top_startups():
     try:
         with get_db_connection() as conn:
@@ -49,7 +49,8 @@ def get_top_startups():
     except Exception as e:
         print(f"Error fetching top-startups: {e}")
         return []
-        
+
+# 3. Define a function that returns sectors in descending order based on total investment
 def get_sector_allocation():
     try:
         with get_db_connection() as conn:
@@ -67,7 +68,8 @@ def get_sector_allocation():
     except Exception as e:
         print(f"Error fetching sector allocations: {e}")
         return []
-        
+
+# 4. Define a function that returns all information on a specific startup based on its startup_id
 def get_startup_by_id(startup_id):
     try:
         with get_db_connection() as conn:
@@ -77,12 +79,13 @@ def get_startup_by_id(startup_id):
                     FROM Startups
                     WHERE startup_id = %s
                     """, (startup_id,))
-                return cursor.fetchall()
+                row = cursor.fetchone()
+                return dict(row) if row else None
     except Exception as e:
         print(f"Error fetching startup: {e}")
-        return []
+        return None
 
-
+# 5. Define a function that calculates a "VC score" for each startup based on total investment, number of rounds, diversity of portfolio (number of therapeutic areas) and investment stage
 def get_score():
     try:
         with get_db_connection() as conn:
@@ -90,7 +93,7 @@ def get_score():
                 cursor.execute("""
                                     SELECT s.name,
                         SUM(i.investment_amount_millions) AS total_funding,
-                        COUNT(i.investment_id) AS rounds,
+                        COUNT(DISTINCT i.investment_id) AS rounds,
                         COUNT(DISTINCT sa.area_id) AS areas,
                                 
                         CASE
@@ -106,10 +109,12 @@ def get_score():
                     GROUP BY s.startup_id;
                     """)
                 return cursor.fetchall()
+            
     except Exception as e:
         print(f"Error generating VC scores: {e}")
         return []
-        
+
+# 6. Define a function that adds a new startup to the database
 def post_new_startup(data):
     try:
         with get_db_connection() as conn:
@@ -131,28 +136,34 @@ def post_new_startup(data):
         }
     
     except Exception as e:
-        print(f"Error fetching posting startup: {e}")
-        return []
+        print(f"Error adding startup: {e}")
+        return {
+            "message": "Failed to add startup",
+            "error": str(e)
+        }
+    
 
+# 7. Define a function that deletes an entry from the database using its startup_id
 def delete_startup(startup_id):
     try:
         with get_db_connection() as conn:
             with conn.cursor() as cursor:
                 cursor.execute("""
-                    DELETE
-                    FROM Startups
+                    DELETE FROM Startups
                     WHERE startup_id = %s
-                    """, (startup_id,))
+                """, (startup_id,))
                 
-                    # Check if anything was actually deleted
+                # Check if anything was actually deleted
                 if cursor.rowcount == 0:
                     return {"message": "Startup not found"}
-            conn.commit()
+            
+                conn.commit()
+        
         return {"message": f"Startup {startup_id} deleted"}
     
     except Exception as e:
-        print(f"Error fetching startups: {e}")
-        return[]
+        print(f"Error deleting startup: {e}")
+        return {"error": "Failed to delete startup"}
 
         
 if __name__ == "__main__":

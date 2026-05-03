@@ -47,12 +47,27 @@ def rankings():
 @app.route("/startups", methods=["POST"])
 def add_startup():
     data = request.json
+
+    required_fields = ["name", "technology", "latest_investment_stage"]
+    if not all(field in data and data[field] for field in required_fields):
+        return jsonify({"message": "Missing required fields"}), 400
+    
     result = post_new_startup(data)
-    return jsonify({"message": "Startup added", "data": result}), 201
+
+    if "error" in result:
+        return jsonify(result), 500
+    
+    return jsonify(result), 201
 
 @app.route("/startups/<int:startup_id>", methods=["DELETE"])
 def remove_startup(startup_id):
     result = delete_startup(startup_id)
+    if "error" in result:
+        return jsonify(result), 500
+
+    if result.get("message") == "Startup not found":
+        return jsonify(result), 404
+    
     return jsonify(result), 200
 
 
