@@ -17,7 +17,7 @@ def get_startups():
                 """)
                 rows = cursor.fetchall()
 
-        # Format database rows into consistent API response structure
+        # Format database rows into consistent API response structure, returning id and and name first rather than alphabetical
         return [
             {
                 "startup_id": row["startup_id"],
@@ -81,6 +81,7 @@ def get_startup_by_id(startup_id):
                     """, (startup_id,))
                 row = cursor.fetchone()
                 return dict(row) if row else None
+            
     except Exception as e:
         print(f"Error fetching startup: {e}")
         return None
@@ -91,9 +92,9 @@ def get_score():
         with get_db_connection() as conn:
             with conn.cursor() as cursor:
                 cursor.execute("""
-                                    SELECT s.name,
+                        SELECT s.name,
                         SUM(i.investment_amount_millions) AS total_funding,
-                        COUNT(DISTINCT i.investment_id) AS rounds,
+                        COUNT(i.investment_id) AS rounds,
                         COUNT(DISTINCT sa.area_id) AS areas,
                                 
                         CASE
@@ -101,6 +102,7 @@ def get_score():
                             WHEN s.latest_investment_stage = "Series A" THEN 10
                             WHEN s.latest_investment_stage = "Series B" THEN 15
                             WHEN s.latest_investment_stage = "Series C" THEN 20
+                            ELSE 0
                         END AS stage_score
                                 
                     FROM Startups s

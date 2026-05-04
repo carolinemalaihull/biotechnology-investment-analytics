@@ -1,8 +1,9 @@
 ## BioVenture Intelligence SPI
 
-The BioVenture Intelligence API is a Flask-based RESTful API that simulates a venture capital analytics system for tracking biotech startups. It provides access to startup data, investment history, sector allocation and performance scoring to help analyse portfolio performance across different therapeutic areas.
+The BioVenture Intelligence API is a Flask-based API that simulates a venture capital analytics system for tracking biotech startups. It provides access to startup data, investment history, sector allocation and performance scoring to help analyse portfolio performance across different therapeutic areas.
 
 ### Key features
+
 - Retrieve all startups and individual startup details
 - Analyse total investment per startup
 - Rank startups based on funding and activity
@@ -10,6 +11,14 @@ The BioVenture Intelligence API is a Flask-based RESTful API that simulates a ve
 - Add new startups via POST requests
 - Delete startups via DELETE requests
 - Visualise VC scores using a Python client
+
+### Project Structure
+
+- `app.py` – Flask API routes  
+- `db_utils.py` – Database query functions  
+- `config.py` – Database connection setup  
+- `main.py` – Console client and visualisation  
+- `.env` – Environment variables (not committed)  
 
 ### Database Design
 
@@ -27,10 +36,19 @@ Primary keys and foreign keys are used to maintain referential integrity, and `A
 
 ### API Endpoints
 
-The available endpoints include `/startups`, `/startups/<id>`, `/startups/top-startups`, `/startups/scores` and `/sectors/allocation`.
+#### Core Endpoints
+- `GET /` – API status message  
+- `GET /startups` – List all startups  
+- `GET /startups/<id>` – Get a specific startup  
 
-/ - home
+#### Analytics Endpoints
+- `GET /startups/top-startups` – Rank startups by total investment  
+- `GET /startups/scores` – VC scoring system  
+- `GET /sectors/allocation` – Investment by therapeutic area  
 
+#### Data Modification
+- `POST /startups` – Add a new startup  
+- `DELETE /startups/<id>` – Delete a startup  
 
 ### Analytics
 
@@ -38,7 +56,7 @@ The available endpoints include `/startups`, `/startups/<id>`, `/startups/top-st
 - `GET /startups/scores` → VC scoring system  
 - `GET /sectors/allocation` → Investment by therapeutic area  
 
-### VC Scoring Sytem
+### VC Scoring System
 
 Each startup is assigned a **VC Score** based on:
 
@@ -75,10 +93,16 @@ This provides a simplified model for ranking startups based on investment attrac
 6. Once running, you can test the API using a browser for GET requests, Postman for POST and DELETE requests, or the provided `main.py` file, which acts as a simple frontend client. This script demonstrates all API endpoints and also generates a VC score visualisation using Matplotlib.
 
 
-Dependencies:
+### Dependencies
 
-config.py
+The project requires the following Python packages:
 
-import pymysql
-import os
-from dotenv import load_dotenv
+- Flask  
+- PyMySQL  
+- Requests  
+- Matplotlib  
+- python-dotenv  
+
+Install them using:
+
+pip install flask pymysql requests matplotlib python-dotenv
