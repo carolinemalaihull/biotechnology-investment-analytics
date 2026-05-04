@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request
 from config import get_db_connection
 from db_utils import get_startups, get_top_startups, get_sector_allocation, get_startup_by_id, get_score, post_new_startup, delete_startup
 
+# New startups added via POST are inserted only into the Startups table.
+# Sector allocation and VC scoring depend on related records in the Startup_Areas and Investments tables.
+# Therefore, newly created startups will not appear in analytics endpoints until additional relational data is added.
 
 app = Flask(__name__)
 
@@ -43,6 +46,7 @@ def startup_by_id(startup_id):
 #-------------------------
 
 # Add function to score startups on the basis of their overall profile
+
 def calculate_vc_score(row):
     return (
         (float(row["total_funding"]) / 10)
@@ -79,6 +83,7 @@ def scores():
 def add_startup():
     data = request.get_json()
 
+    # Returns an error if required fields are empty
     required_fields = ["name", "technology", "latest_investment_stage"]
     if not all(data.get(field) for field in required_fields):
         return jsonify({"message": "Missing required fields"}), 400

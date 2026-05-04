@@ -6,7 +6,7 @@
 import pymysql
 from config import get_db_connection
 
-# 1. Define a function to return all startups
+# 1. Return all startups
 def get_startups():
     try:
         with get_db_connection() as conn:
@@ -32,7 +32,7 @@ def get_startups():
         print(f"Error fetching startups: {e}")
         return []
 
-# 2. Define a function that orders startups in descending order based on total investment
+# 2. Order startups in descending order based on total investment
 def get_top_startups():
     try:
         with get_db_connection() as conn:
@@ -50,7 +50,7 @@ def get_top_startups():
         print(f"Error fetching top-startups: {e}")
         return []
 
-# 3. Define a function that returns sectors in descending order based on total investment
+# 3. Returns sectors in descending order based on total investment
 def get_sector_allocation():
     try:
         with get_db_connection() as conn:
@@ -69,7 +69,7 @@ def get_sector_allocation():
         print(f"Error fetching sector allocations: {e}")
         return []
 
-# 4. Define a function that returns all information on a specific startup based on its startup_id
+# 4. Return all information on a specific startup based on its startup_id
 def get_startup_by_id(startup_id):
     try:
         with get_db_connection() as conn:
@@ -86,7 +86,7 @@ def get_startup_by_id(startup_id):
         print(f"Error fetching startup: {e}")
         return None
 
-# 5. Define a function that calculates a "VC score" for each startup based on total investment, number of rounds, diversity of portfolio (number of therapeutic areas) and investment stage
+# 5. Calculate a "VC score" for each startup based on total investment, number of rounds, diversity of portfolio (number of therapeutic areas) and investment stage
 def get_score():
     try:
         with get_db_connection() as conn:
@@ -116,7 +116,7 @@ def get_score():
         print(f"Error generating VC scores: {e}")
         return []
 
-# 6. Define a function that adds a new startup to the database
+# 6. Add a new startup to the database
 def post_new_startup(data):
     try:
         with get_db_connection() as conn:
@@ -145,7 +145,7 @@ def post_new_startup(data):
         }
     
 
-# 7. Define a function that deletes an entry from the database using its startup_id
+# 7. Delete an entry from the database using its startup_id
 def delete_startup(startup_id):
     try:
         with get_db_connection() as conn:

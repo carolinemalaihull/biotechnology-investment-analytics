@@ -1,4 +1,4 @@
-## BioVenture Intelligence SPI
+## BioVenture Intelligence API
 
 The BioVenture Intelligence API is a Flask-based API that simulates a venture capital analytics system for tracking biotech startups. It provides access to startup data, investment history, sector allocation and performance scoring to help analyse portfolio performance across different therapeutic areas.
 
@@ -39,7 +39,7 @@ Primary keys and foreign keys are used to maintain referential integrity, and `A
 #### Core Endpoints
 - `GET /` – API status message  
 - `GET /startups` – List all startups  
-- `GET /startups/<id>` – Get a specific startup  
+- `GET /startups/<startup_id>` – Get a specific startup  
 
 #### Analytics Endpoints
 - `GET /startups/top-startups` – Rank startups by total investment  
@@ -49,12 +49,6 @@ Primary keys and foreign keys are used to maintain referential integrity, and `A
 #### Data Modification
 - `POST /startups` – Add a new startup  
 - `DELETE /startups/<id>` – Delete a startup  
-
-### Analytics
-
-- `GET /startups/top-startups` → Rank startups by total investment  
-- `GET /startups/scores` → VC scoring system  
-- `GET /sectors/allocation` → Investment by therapeutic area  
 
 ### VC Scoring System
 
@@ -66,6 +60,11 @@ Each startup is assigned a **VC Score** based on:
 - Number of therapeutic areas  
 
 This provides a simplified model for ranking startups based on investment attractiveness.
+
+VC scores are calculated dynamically within the API using aggregated database values.
+
+Please note - New startups added via POST are inserted only into the Startups table.
+Sector allocation and VC scoring depend on related records in the Startup_Areas and Investments tables which is not covered here. Therefore, newly created startups will not appear in analytics endpoints until additional relational data is added.
 
 ### How to run:
 
@@ -90,7 +89,7 @@ This provides a simplified model for ranking startups based on investment attrac
 
 5. To start the API, run `flask run` in your terminal. The server will start locally at `http://127.0.0.1:5000`.
 
-6. Once running, you can test the API using a browser for GET requests, Postman for POST and DELETE requests, or the provided `main.py` file, which acts as a simple frontend client. This script demonstrates all API endpoints and also generates a VC score visualisation using Matplotlib.
+6. Once running, you can test the API using a browser for GET requests, Postman for POST and DELETE requests, or the provided `main.py` file, which acts as a simple frontend client. This script demonstrates example API endpoints and also generates a VC score visualisation using Matplotlib.
 
 
 ### Dependencies

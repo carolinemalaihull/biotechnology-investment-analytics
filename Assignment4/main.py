@@ -76,6 +76,11 @@ def plot_vc_scores():
 # ------- CONSOLE MENU --------
 # -----------------------------
 
+# Let the user choose from 3 example endpoints and data visualisation
+# New startups added via POST are inserted only into the Startups table.
+# VC scores require related investment and therapeutic area data, so newly created startups will not appear in analytics endpoints until additional relational data is added (not shown here).
+
+
 def menu():
     while True:
         print("\n=== BioVenture Console App ===")
