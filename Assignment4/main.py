@@ -50,7 +50,7 @@ def print_section(title, data):
 # -- VISUALISATION FUNCTION --
 # -----------------------------
 
-# Plots VC scores using matplotlib
+# VC scores are probably the most useful enpoint in this system, so these have been visualised with matplotlib
 
 def plot_vc_scores():
     data = safe_get(f"{BASE}/startups/scores")

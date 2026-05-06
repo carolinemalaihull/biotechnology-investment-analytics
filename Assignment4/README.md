@@ -61,8 +61,6 @@ Each startup is assigned a **VC Score** based on:
 
 This provides a simplified model for ranking startups based on investment attractiveness.
 
-VC scores are calculated dynamically within the API using aggregated database values.
-
 Please note - New startups added via POST are inserted only into the Startups table.
 Sector allocation and VC scoring depend on related records in the Startup_Areas and Investments tables which is not covered here. Therefore, newly created startups will not appear in analytics endpoints until additional relational data is added.
 
@@ -90,6 +88,14 @@ Sector allocation and VC scoring depend on related records in the Startup_Areas 
 5. To start the API, run `flask run` in your terminal. The server will start locally at `http://127.0.0.1:5000`.
 
 6. Once running, you can test the API using a browser for GET requests, Postman for POST and DELETE requests, or the provided `main.py` file, which acts as a simple frontend client. This script demonstrates example API endpoints and also generates a VC score visualisation using Matplotlib.
+
+Example Post Request:
+
+{
+  "name": "OncoNova Therapeutics",
+  "technology": "CAR T cells",
+  "latest_investment_stage": "Series B"
+}
 
 
 ### Dependencies
