@@ -112,9 +112,22 @@ def menu():
         else:
             print("Invalid choice")
 
+# -----------------------------
+# -------- RUN FUNCTION -------
+# -----------------------------
+# Required by assignment specification
+
+def run():
+    print("\n==============================")
+    print("  BioVenture Intelligence API")
+    print("==============================")
+    print("Welcome to the VC analytics system\n")
+
+    menu()
+
       
 # -----------------------------
 # ---------- RUN APP ----------
 # -----------------------------
 if __name__ == "__main__":
-    menu()
+    run()
