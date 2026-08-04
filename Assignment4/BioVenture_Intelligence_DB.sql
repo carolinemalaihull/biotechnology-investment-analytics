@@ -5,6 +5,8 @@
 -- April 15th 2026 --------------
 -- ------------------------------
 
+-- UPDATED MAY 4th 2026 to include auto-increment on startup_id and investment_id
+
 -- This database simulates a venture capital firm tracking biotech startups across multiple therapeutic areas and funding rounds
 -- Data for most recent funding rounds of each company is real but prior rounds are a mix of real and fabricated data
 -- Real data source https://www.labiotech.eu/biotech-funding-2026-tracker
