@@ -210,9 +210,6 @@ biotech-investment-analytics/
 ├── BioVenture-Intelligence-API/
 │   └── Flask REST API and Python analytics client
 │
-├── screenshots/
-│   └── Documentation of Git and GitHub workflow development
-│
 ├── requirements.txt
 └── README.md
 ```
